@@ -21,7 +21,7 @@ def  crawl_list(CIK):
 		obj_page = urllib.urlopen(root_url + tmp_page['href']).read();
 		my_soup = BeautifulSoup(obj_page);
 		txt_obj =  my_soup.find('a', href=re.compile('[A-Za-z0-9]*\.txt'));
-		print root_url + txt_obj['href'];
+		urllib.urlretrieve(root_url + txt_obj['href'], "./data/"+ CIK+ '_' + txt_obj.contents[0]);
 
 if __name__=="__main__":
 	crawl_list("0001326801"); 
